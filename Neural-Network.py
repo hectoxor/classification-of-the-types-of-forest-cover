@@ -49,23 +49,4 @@ nn_clf_pca_10 = MLPClassifier(
     n_iter_no_change=10,
     max_iter = 10000
 )
-import time 
 
-pca_10_train_start_time = time.time() 
-nn_clf_pca_10.fit(X_train_pca_10, y_train)
-pca_10_train_total_time = time.time() - pca_10_train_start_time
-
-pca_10_test_start_time = time.time()
-pca_10_score = nn_clf_pca_10.score(X_test_pca_10, y_test)
-pca_10_test_total_time = time.time() - pca_10_test_start_time
-
-print(f"Training finished in {pca_10_train_total_time} seconds")
-print(f"Score: {pca_10_score}. Scoring took {pca_10_test_total_time} seconds")
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-import numpy as np
-y_pred = nn_clf_pca_10.predict(X_test_pca_10) 
-print(classification_report(y_test, y_pred, digits=4))
-cm = confusion_matrix(y_test, y_pred)
-cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-cm.diagonal()
