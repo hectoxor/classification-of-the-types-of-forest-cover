@@ -29,15 +29,7 @@ def make_pca(X_train, num_components):
 pca_10, X_train_pca_10 = make_pca(X_train, num_components=10)
 X_test_pca_10 = pca_10.transform(X_test)
 print(sorted(Counter(y_train).items()))
-import seaborn as sns
 
-pc_df = pd.DataFrame(data=X_train_pca_10, columns = ['PC1', 'PC2','PC3','PC4', 'PC5', 'PC6', 'PC7', 'PC8', 'PC9', 'PC10'])
-pc_df['Cluster'] = y_train
-sns.lmplot( x="PC9", y="PC10",
-  data=pc_df, 
-  fit_reg=False, 
-  hue='Cluster', 
-  legend=True,) 
 cnt = sorted(Counter(y_train).items())
 #rus = SMOTE(random_state=0, sampling_strategy={1:cnt[0][1], 2:cnt[1][1], 3:cnt[2][1], 4:12500, 5:20000, 6:23000, 7:cnt[6][1]}, k_neighbors = 5)
 rus = SMOTE(random_state=0, sampling_strategy={1:169259, 2:226793, 3:100000, 4:100000, 5:80000, 6:80000, 7:90000}, k_neighbors = 10)
