@@ -26,7 +26,7 @@ def nn_objective(trial):
     
     model.fit(X_train_pca_10, y_train)
 
-    # Evaluate the accuracy on the test set
+    
     y_pred = model.predict(X_test_pca_10)
     accuracy = accuracy_score(y_test, y_pred)
 
@@ -35,7 +35,7 @@ def nn_objective(trial):
 study = optuna.create_study(direction="maximize")
 study.optimize(nn_objective, n_trials=50)
 
-# Print the best hyperparameters
+
 print("Best NN hyperparameters: ", study.best_params)
 nn_clf_pca_10 = MLPClassifier(
     hidden_layer_sizes = (40, 30, 20, 10, 5),
