@@ -2,7 +2,7 @@
 y = data['class']
 X = data.drop(['class'], axis=1)
 
-#Split the data into train and test sets
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 import numpy as np 
 import matplotlib.pyplot as plt 
