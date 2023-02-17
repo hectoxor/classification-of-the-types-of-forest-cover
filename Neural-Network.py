@@ -4,9 +4,6 @@ def nn_objective(trial):
 
     #hidden_layer_spec = (15,15,15)
 
-    # Uncomment the following section if you also want Optuna to try different
-    # architectures. In this snippet, Optuna selects the number of layers and number
-    # of neurons per layer
     layers = []
     n_layers = trial.suggest_int("n_layers", 3, 4)
     for i in range(n_layers):
